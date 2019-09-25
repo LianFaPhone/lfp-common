@@ -79,6 +79,16 @@ func HttpFormSend(url string, formBody url.Values, method string, headers map[st
 	return content, nil
 }
 
+/*  multipart/form-data
+	buf := new(bytes.Buffer)
+	w := multipart.NewWriter(buf)
+	err := w.WriteField("appId", GConfig.ChuangLan.AppId)
+	err = w.WriteField("appKey", GConfig.ChuangLan.AppKey)
+	err = w.WriteField("name", name)
+	err = w.WriteField("idNum", idcard)
+	err = w.Close()
+ */
+
 func HttpSend2(url string, body io.Reader, method string, headers map[string]string) ([]byte, error) {
 	if len(method) == 0 {
 		method = "GET"
