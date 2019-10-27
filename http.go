@@ -1,10 +1,10 @@
 package common
 
 import (
-	"io"
-	"net/http"
-	"io/ioutil"
 	"errors"
+	"io"
+	"io/ioutil"
+	"net/http"
 	"net/url"
 	"strings"
 )
@@ -19,7 +19,7 @@ func HttpSend(url string, body io.Reader, method string, headers map[string]stri
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	for k,v := range headers {
+	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
 	resp, err := http.DefaultClient.Do(req)
@@ -34,7 +34,7 @@ func HttpSend(url string, body io.Reader, method string, headers map[string]stri
 
 	content, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 
 	if len(content) == 0 {
@@ -55,7 +55,7 @@ func HttpFormSend(url string, formBody url.Values, method string, headers map[st
 	}
 
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	for k,v := range headers {
+	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
 	resp, err := http.DefaultClient.Do(req)
@@ -70,7 +70,7 @@ func HttpFormSend(url string, formBody url.Values, method string, headers map[st
 
 	content, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 
 	if len(content) == 0 {
@@ -80,14 +80,14 @@ func HttpFormSend(url string, formBody url.Values, method string, headers map[st
 }
 
 /*  multipart/form-data
-	buf := new(bytes.Buffer)
-	w := multipart.NewWriter(buf)
-	err := w.WriteField("appId", GConfig.ChuangLan.AppId)
-	err = w.WriteField("appKey", GConfig.ChuangLan.AppKey)
-	err = w.WriteField("name", name)
-	err = w.WriteField("idNum", idcard)
-	err = w.Close()
- */
+buf := new(bytes.Buffer)
+w := multipart.NewWriter(buf)
+err := w.WriteField("appId", GConfig.ChuangLan.AppId)
+err = w.WriteField("appKey", GConfig.ChuangLan.AppKey)
+err = w.WriteField("name", name)
+err = w.WriteField("idNum", idcard)
+err = w.Close()
+*/
 
 func HttpSend2(url string, body io.Reader, method string, headers map[string]string) ([]byte, error) {
 	if len(method) == 0 {
@@ -99,7 +99,7 @@ func HttpSend2(url string, body io.Reader, method string, headers map[string]str
 	}
 
 	//req.Header.Set("Content-Type", "application/json")
-	for k,v := range headers {
+	for k, v := range headers {
 		req.Header.Set(k, v)
 	}
 	resp, err := http.DefaultClient.Do(req)
@@ -114,7 +114,7 @@ func HttpSend2(url string, body io.Reader, method string, headers map[string]str
 
 	content, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
 
 	if len(content) == 0 {

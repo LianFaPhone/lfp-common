@@ -1,7 +1,7 @@
 package common
 
 import (
-	. "BastionPay/bas-base/log/zap"
+	. "LianFaPhone/lfp-base/log/zap"
 	"github.com/kataras/iris"
 	"go.uber.org/zap"
 	"strings"
@@ -12,7 +12,7 @@ const (
 )
 
 func GetRealIp(ctx iris.Context) string {
-	if ctx==nil {
+	if ctx == nil {
 		return ""
 	}
 	var (
